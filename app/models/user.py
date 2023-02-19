@@ -13,11 +13,11 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    firstName = db.Column(db.String(20), nullable=False, unique=True)
-    lastName = db.Column(db.String(20), nullable=False, unique=True)
+    firstName = db.Column(db.String(20), nullable=True, unique=True)
+    lastName = db.Column(db.String(20), nullable=True, unique=True)
     about= db.Column(db.String(500),nullable = True, default='')
     imageUrl = db.Column(db.String(1500), nullable = True)
-    brandName = db.Column(db.String(20), nullable=False, unique=True)
+    brandName = db.Column(db.String(20), nullable=True, unique=True)
     is_brand = db.Column(db.Boolean, nullable=False, unique=False, default= False)
 
     @property

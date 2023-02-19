@@ -7,6 +7,7 @@ class Product(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(50))
     detail= db.Column(db.String(255))
     price= db.Column(db.Integer)
     url= db.Column(db.String(1500))
@@ -15,11 +16,12 @@ class Product(db.Model):
  
     
     def __repr__(self):
-        return f'<Product Id: {self.id}, brandId: {self.brandId}, detail: {self.detail}, price: {self.price}, url: {self.url}, imageUrl: {self.imageUrl}>'
+        return f'<Product Id: {self.id}, brandId: {self.brandId}, title: {self.title}, detail: {self.detail}, price: {self.price}, url: {self.url}, imageUrl: {self.imageUrl}>'
   
     def to_dict(self):
             return {
                 'id': self.id,
+                'title': self.title,
                 'brandId': self.brandId,
                 'detail': self.detail,
                 'price': self.price,
