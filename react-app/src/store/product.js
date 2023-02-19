@@ -35,6 +35,7 @@ export const getAllProducts = () => async (dispatch) =>{
 }
 
 export const addAProduct = (products)=> async (dispatch) =>{
+
     const response = await fetch("/api/products/",{
     method: "POST",
     headers: {
@@ -43,6 +44,7 @@ export const addAProduct = (products)=> async (dispatch) =>{
     body: JSON.stringify(products)
 });
 
+
 if (response.ok){
     const data = await response.json();
     dispatch(loadOneProduct(data));
@@ -50,7 +52,7 @@ if (response.ok){
 } else {
     const error = response.json();
     return error;
-}
+    }
 }
 
 const initialProducts = {}
@@ -67,7 +69,7 @@ const productsReducer = (state=initialProducts, action) =>{
             copy[action.products.id] = action.products
             return copy;
 
-         default:
+        default:
             return state;
     }
 

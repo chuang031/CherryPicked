@@ -18,6 +18,7 @@ function CreateProductForm(){
         e.preventDefault()
         setErrors([])
         const payload = { title, detail, price, url, imageUrl}
+
         let data = await dispatch(addAProduct(payload))
 
         if (data.errors){

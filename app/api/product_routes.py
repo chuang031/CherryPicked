@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, render_template, redirect, request
 from flask_login import login_required, current_user
-from app.models import Product, db
-from app.forms import ProductForm
+
+from ..models.product import Product, db
+from ..forms.product_form import ProductForm
 
 
 product_routes = Blueprint('products', __name__)
@@ -38,6 +39,7 @@ def create_product():
     form = ProductForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
         data = form.data
         new_product = Product(brandId=current_user.get_id(),

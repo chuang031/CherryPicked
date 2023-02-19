@@ -30,9 +30,9 @@ function App() {
             <SignupFormPage />
           </Route>
 
-          <Route exact path="/">
+          <ProtectedRoute exact path="/">
           <ProductHomePage />
-        </Route>
+        </ProtectedRoute>
 
         <ProtectedRoute exact path="/productform">
         <CreateProductForm />
