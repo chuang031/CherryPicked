@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAllProducts } from "../../../store/product";
 import { Link } from "react-router-dom";
+import './ProductHomePage.css'
+
 const ProductHomePage = () => {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -17,8 +19,9 @@ const ProductHomePage = () => {
     console.log(allProducts, "all");
 
     return (
-        <div>
+        <div className="product_container">
             <h1>All Products</h1>
+            <div className="products">
             {allProducts.map(({ id, title, detail, url, imageUrl, price }) => (
                 <li key={id} className="card">
 
@@ -31,6 +34,7 @@ const ProductHomePage = () => {
                     </Link>
                 </li>
             ))}
+            </div>
 
             <button
                 className="create-button"
