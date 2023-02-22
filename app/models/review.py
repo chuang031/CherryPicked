@@ -9,8 +9,8 @@ class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     productId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('products.id')), nullable=False)
     customerId= db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    review= db.Column(db.String(1500))
-    stars = db.Column(db.Integer)
+    review= db.Column(db.String(1500), nullable = False)
+    stars = db.Column(db.Integer, nullable = False)
     imageUrl= db.Column(db.String(1500))
 
 

@@ -18,14 +18,14 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @product_routes.route('/', methods=['GET'])
-# @login_required
+@login_required
 def get_all_products():
     products = Product.query.all()
     # print('********GET ALL PINS********')
     return jsonify([product.to_dict() for product in products])
 
 @product_routes.route('/<int:id>')
-# @login_required
+@login_required
 def get_product(id):
     # print('************GET 1 PIN********************')
     product = Product.query.get(id)
@@ -54,7 +54,7 @@ def create_product():
 
 
 @product_routes.route('/<int:id>', methods=["PATCH", "PUT"])
-# @login_required
+@login_required
 def edit_product(id):
 
     form = ProductForm()
@@ -71,7 +71,7 @@ def edit_product(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 @product_routes.route('/<int:id>', methods=['DELETE'])
-# @login_required
+@login_required
 def delete_product(id):
     product = Product.query.get(id)
     db.session.delete(product)

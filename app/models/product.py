@@ -7,11 +7,11 @@ class Product(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50))
-    detail= db.Column(db.String(255))
-    price= db.Column(db.Integer)
-    url= db.Column(db.String(1500))
-    imageUrl= db.Column(db.String(1500))
+    title = db.Column(db.String(50), nullable = False)
+    detail= db.Column(db.String(255), nullable = False)
+    price= db.Column(db.Integer, nullable = False)
+    url= db.Column(db.String(1500), nullable = False)
+    imageUrl= db.Column(db.String(1500), nullable = False)
     brandId= db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
  
     
