@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteAProduct, getSingleProduct } from "../../../store/product";
+import CreateReviewForm from "../../Reviews/CreateReviews/CreateReviews";
+
+
 
 function ProductDetailPage(){
     const {productId} = useParams()
@@ -39,10 +42,13 @@ function ProductDetailPage(){
         <button className='update_button' type="button">Update Product Form</button>
       </Link>
 
+   
+
       <button className='delete_button' type="button" onClick={deleteProduct}>
       Delete Product
     </button>
 
+    <CreateReviewForm/>
         </div>
     )
 }

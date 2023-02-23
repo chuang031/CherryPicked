@@ -26,10 +26,12 @@ const ProductHomePage = () => {
                 <li key={id} className="card">
 
                 <Link to ={`/products/${id}`}>
-                    <img className="card_img" src={imageUrl}></img>
+                    <div className="img-container">
+                        <img className="card_img" src={imageUrl}></img>
+                    </div>
                     <div className="title">Product Name: {title}</div>
                     <div className="detail">Product Details: {detail} </div>
-                    <div className="price">${price} </div>
+                    <div className="price">${(Math.round(price * 100)/100)} </div>
                     <div className="link">Link: {url}</div>
                     </Link>
                 </li>

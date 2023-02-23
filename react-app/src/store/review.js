@@ -42,15 +42,16 @@ export const addAReview = (reviews)=> async (dispatch) =>{
         },
         body: JSON.stringify(reviews)
     })
+    if (response.ok){
+        const data = await response.json()
+        dispatch(loadOneReview(data))
+    } else {
+        const error = response.json()
+        return error
+    }
 }
 
-if (response.ok){
-    const data = await response.json()
-    dispatch(loadOneReview(data))
-} else {
-    const error = response.json()
-    return error
-}
+
 
 export const editAReview = (id, reviewData)=> async (dispatch) =>{
     const response = await fetch(`/api/reviews/${id}`,{
