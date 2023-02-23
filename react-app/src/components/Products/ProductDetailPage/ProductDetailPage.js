@@ -31,12 +31,12 @@ function ProductDetailPage(){
 
         <div>Title: {specificProduct?.title}</div>
         <div>Product Details: {specificProduct?.detail}</div>
-        <div>Price: {specificProduct?.price}</div>
+        <div>Price: ${(Math.round(specificProduct?.price * 100)/100)}</div>
         <div>Link: {specificProduct?.url}</div>
         <div>Brand: {specificProduct?.brandId}</div>
 
         <Link to={`/products/${specificProduct?.id}/update`}>
-        <button className='update_button' type="button">Edit Product Form</button>
+        <button className='update_button' type="button">Update Product Form</button>
       </Link>
 
       <button className='delete_button' type="button" onClick={deleteProduct}>

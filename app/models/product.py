@@ -9,7 +9,7 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable = False)
     detail= db.Column(db.String(255), nullable = False)
-    price= db.Column(db.Integer, nullable = False)
+    price= db.Column(db.Numeric, nullable = False)
     url= db.Column(db.String(1500), nullable = False)
     imageUrl= db.Column(db.String(1500), nullable = False)
     brandId= db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
