@@ -11,8 +11,10 @@ class Review(db.Model):
     customerId= db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     review= db.Column(db.String(1500), nullable = False)
     stars = db.Column(db.Integer, nullable = False)
-    imageUrl= db.Column(db.String(1500))
+    imageUrl= db.Column(db.String(1500), nullable = True)
 
+    user = db.relationship("User", back_populates="reviews")
+    product = db.relationship("Product", back_populates="reviews")
 
     def __repr__(self):
         return f'<Review Id: {self.id}, productId: {self.productId}, customerId: {self.customerId}, review: {self.review}, stars: {self.stars}, imageUrl:{self.imageUrl}'

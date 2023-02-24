@@ -19,7 +19,10 @@ class User(db.Model, UserMixin):
     imageUrl = db.Column(db.String(1500), nullable = True)
     brandName = db.Column(db.String(20), nullable=True, unique=True)
     is_brand = db.Column(db.Boolean, nullable=False, unique=False, default= False)
-
+    
+    reviews = db.relationship("Review", back_populates="user",
+         cascade="all, delete-orphan")
+    
     @property
     def password(self):
         return self.hashed_password

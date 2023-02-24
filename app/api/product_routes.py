@@ -3,7 +3,8 @@ from flask_login import login_required, current_user
 
 from ..models.product import Product, db
 from ..forms.product_form import ProductForm
-
+from ..forms.review_form import ReviewForm
+from app.models.review import Review, db
 
 product_routes = Blueprint('products', __name__)
 
@@ -77,3 +78,49 @@ def delete_product(id):
     db.session.delete(product)
     db.session.commit()
     return "Successfully Deleted Product"
+
+# get reviews of product
+@product_routes.route('/<int:id>/reviews', methods = ['GET'])
+@login_required
+def get_all_reviews(productId):
+    reviews = Review.query.filter(Review.productId== productId).all()
+    return {"Reviews":[review.to_dict() for review in reviews]}
+
+
+#post a review of a product 
+@product_routes.route('/<int:productId>/reviews/', methods = ['POST'])
+@login_required
+def create_review(productId):
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        data = form.data
+        new_review = Review(
+                    customerId= current_user.id,
+                    productId = productId,
+                    review = data['review'], 
+                    stars = data['stars'],
+                    imageUrl = data['imageUrl']
+                       )
+        form.populate_obj(new_review)
+
+        db.session.add(new_review)
+        db.session.commit()
+        return new_review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@product_routes.route('/<int:id>/reviews', methods=["PATCH", "PUT"])
+@login_required
+def edit_review(id):
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        data = form.data
+        review = Review.query.get(id)
+        for key, value in data.items():
+            setattr(review, key, value)
+        db.session.commit()
+        return review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400

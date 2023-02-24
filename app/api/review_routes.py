@@ -15,49 +15,7 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-@review_routes.route('/', methods = ['GET'])
-@login_required
-def get_all_reviews():
-    reviews = Review.query.all()
-    return jsonify([review.to_dict() for review in reviews])
 
-@review_routes.route('/<int:id>')
-@login_required
-def get_review(id):
-    review = Review.query.get(id)
-    return review.to_dict()
-
-@review_routes.route('/', methods = ['POST'])
-@login_required
-def create_review():
-    form = ReviewForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-
-    if form.validate_on_submit():
-        data = form.data
-        new_review = Review(customerId = current_user.get_id(),
-                     review = data['review'], stars = data['stars'], imageUrl = data['imageUrl'])
-        form.populate_obj(new_review)
-
-        db.session.add(new_review)
-        db.session.commit()
-        return new_review.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
-
-@review_routes.route('/<int:id>', methods=["PATCH", "PUT"])
-@login_required
-def edit_review(id):
-    form = ReviewForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-
-    if form.validate_on_submit():
-        data = form.data
-        review = Review.query.get(id)
-        for key, value in data.items():
-            setattr(review, key, value)
-        db.session.commit()
-        return review.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 @review_routes.route('/<int:id>', methods=['DELETE'])
 @login_required

@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteAProduct, getSingleProduct } from "../../../store/product";
 import CreateReviewForm from "../../Reviews/CreateReviews/CreateReviews";
+import ProductReviews from "../../Reviews/ReviewsList/ReviewsList";
+import ProductReviewslist from "../../Reviews/ReviewsList/ReviewsList";
 
 
 
@@ -12,18 +14,21 @@ function ProductDetailPage(){
     const {productId} = useParams()
     const allProducts = useSelector((state)=> state.product)
     const specificProduct = allProducts[productId]
+    const [reviews,setReviews]= useState([])
     const history = useHistory();
     const dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(getSingleProduct(productId))
+    },[productId, dispatch])
 
+  
     const deleteProduct = (e)=>{
         e.preventDefault()
         dispatch(deleteAProduct(productId))
         history.push(`/`)
     }
-
-    useEffect(()=>{
-        dispatch(getSingleProduct(productId))
-    },[productId, dispatch])
+    if (!specificProduct) return null;
+ 
     return(
         <div>
         <h1>Product Detail Page</h1>
@@ -48,7 +53,10 @@ function ProductDetailPage(){
       Delete Product
     </button>
 
-    <CreateReviewForm/>
+    
+
+    <ProductReviewslist product={specificProduct} reviews={reviews} setReviews={setReviews}/>
+    <CreateReviewForm product={specificProduct} reviews={reviews} setReviews={setReviews}/>
         </div>
     )
 }

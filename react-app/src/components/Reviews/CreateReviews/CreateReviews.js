@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { getSingleProduct } from "../../../store/product";
 import { addAReview } from "../../../store/review";
 
-function CreateReviewForm(){
+function CreateReviewForm({product}){
 const [review, setReview] = useState('')
 const [stars, setStars] = useState('')
 const [imageUrl, setImageUrl] = useState('')
@@ -11,19 +12,27 @@ const [imageUrl, setImageUrl] = useState('')
 const dispatch = useDispatch()
 const [errors, setErrors] = useState([]);
 const history = useHistory()
+const allProducts = useSelector((state)=> state.product)
+const specificProduct = allProducts[product.id]
+
+const allProductReviews = useSelector((state)=> state.review)
+
 
 const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
     const payload = { review, stars, imageUrl };
+   
+    let data = await dispatch(addAReview(payload, product.id));
+    console.log(data, 'rev')
+    dispatch(getSingleProduct(product.id))
 
-    let data = await dispatch(addAReview(payload));
-
-    if (data.errors) {
-        setErrors([...Object.values(data.errors)]);
-    } else {
-        history.push("/");
-    }
+   
+    // if (data.errors) {
+    //     setErrors([...Object.values(data.errors)]);
+    // } else {
+    //     history.push(`/products/${product.id}`);
+    // }
 };
 return (
     <section className="create-product-form">
@@ -67,7 +76,6 @@ return (
                     type="text"
                     className="review-input"
                     value={imageUrl}
-                    required
                     onChange={(e) => setImageUrl(e.target.value)}
                 />
             </label>

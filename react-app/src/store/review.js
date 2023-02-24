@@ -1,19 +1,20 @@
 const LOAD_MANY_REVIEWS = "reviews/LOAD_MANY_REVIEWS"
 
-const LOAD_ONE_REVIEW = "reviews/LOAD_ONE_REVIEW"
+const ADD_REVIEW = "reviews/ADD_REVIEW"
 
 const DELETE_REVIEW = "reviews/DELETE_REVIEW"
 
-const loadReviews = (reviews) =>{
+const loadReviews = (reviews, productId) =>{
     return{
         type: LOAD_MANY_REVIEWS,
-        reviews
+        reviews,
+        productId
     }
 }
 
-const loadOneReview = (reviews) =>{
+const addReview = (reviews) =>{
     return{
-        type: LOAD_ONE_REVIEW,
+        type: ADD_REVIEW,
         reviews
     }
 }
@@ -25,17 +26,19 @@ const deleteReview = (reviewId) =>{
     }
 }
 
-export const getAllReviews =()=> async(dispatch) =>{
-    const response = await fetch(`/api/reviews/`)
 
-    if(response.ok){
+export const getProductReview =(productId)=> async(dispatch)=>{
+    const response = await fetch(`/api/products/${productId}/reviews/`)
+
+    if (response.ok){
         const data = await response.json()
-        dispatch(loadReviews(data))
+        dispatch(loadReviews(data, productId))
+
     }
 }
 
-export const addAReview = (reviews)=> async (dispatch) =>{
-    const response = await fetch('/api/reviews/',{
+export const addAReview = (reviews,productId)=> async (dispatch) =>{
+    const response = await fetch(`/api/products/${productId}/reviews/`,{
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -44,7 +47,7 @@ export const addAReview = (reviews)=> async (dispatch) =>{
     })
     if (response.ok){
         const data = await response.json()
-        dispatch(loadOneReview(data))
+        dispatch(addReview(data))
     } else {
         const error = response.json()
         return error
@@ -54,7 +57,7 @@ export const addAReview = (reviews)=> async (dispatch) =>{
 
 
 export const editAReview = (id, reviewData)=> async (dispatch) =>{
-    const response = await fetch(`/api/reviews/${id}`,{
+    const response = await fetch(`/api/products/${id}/reviews/`,{
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
@@ -93,10 +96,12 @@ const reviewsReducer = (state= initalReviews, action) =>{
         case LOAD_MANY_REVIEWS:
             action.reviews.forEach((review)=>{
                 copy[review.id]= review
+
+            
             })
             return copy
 
-        case LOAD_ONE_REVIEW:
+        case ADD_REVIEW:
             copy[action.reviews.id] = action.reviews
             return copy
 

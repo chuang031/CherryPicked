@@ -21,29 +21,27 @@ const ProductHomePage = () => {
     return (
         <div className="product_container">
             <h1>All Products</h1>
+            <button
+            className="create-button"
+            onClick={navigateToCreateProductForm}
+        >
+            Create Product
+        </button>
             <div className="products">
-            {allProducts.map(({ id, title, detail, url, imageUrl, price }) => (
-                <li key={id} className="card">
+            {allProducts.map(({ id, imageUrl }, idx) => (
+                <div key={id} className={idx % 3 === 1 ? 'small': idx % 3 === 2? 'medium': 'large'}>
 
                 <Link to ={`/products/${id}`}>
                     <div className="img-container">
                         <img className="card_img" src={imageUrl}></img>
-                    </div>
-                    <div className="title">Product Name: {title}</div>
-                    <div className="detail">Product Details: {detail} </div>
-                    <div className="price">${(Math.round(price * 100)/100)} </div>
-                    <div className="link">Link: {url}</div>
+            </div>
+
                     </Link>
-                </li>
+                </div>
             ))}
             </div>
 
-            <button
-                className="create-button"
-                onClick={navigateToCreateProductForm}
-            >
-                Create Product
-            </button>
+   
         </div>
     );
 };
