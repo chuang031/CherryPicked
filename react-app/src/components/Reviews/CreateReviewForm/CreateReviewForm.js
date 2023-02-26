@@ -5,6 +5,7 @@ import { getSingleProduct } from "../../../store/product";
 import { addAReview } from "../../../store/review";
 
 function CreateReviewForm({product}){
+    
 const [review, setReview] = useState('')
 const [stars, setStars] = useState('')
 const [imageUrl, setImageUrl] = useState('')
@@ -22,17 +23,19 @@ const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
     const payload = { review, stars, imageUrl };
-   
+
+
     let data = await dispatch(addAReview(payload, product.id));
     console.log(data, 'rev')
     dispatch(getSingleProduct(product.id))
 
+    if (data.errors) {
+        setErrors([...Object.values(data.errors)]);
+    } else {
+        history.push(`/products/${product.id}`);
+    }
+
    
-    // if (data.errors) {
-    //     setErrors([...Object.values(data.errors)]);
-    // } else {
-    //     history.push(`/products/${product.id}`);
-    // }
 };
 return (
     <section className="create-product-form">

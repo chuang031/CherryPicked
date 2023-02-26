@@ -35,13 +35,13 @@
 }
 .small{
 
-    grid-row-end: span 26
+    grid-row-start: span 26;
 }
 .medium{
-    grid-row-end: span 33;
+    grid-row-start: span 33;
 }
 .large{
-    grid-row-end: span 45;
+    grid-row-start: span 45;
 }
 /* .img-container {
     width: 100%;

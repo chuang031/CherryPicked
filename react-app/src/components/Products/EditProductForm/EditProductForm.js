@@ -37,7 +37,7 @@ const handleSubmit = async (e) => {
 return (
     <section className="create-product-form">
         <form className="create-form" onSubmit={handleSubmit}>
-            <h1 className="create">Create your Product!</h1>
+            <h1 className="create">Update your Product!</h1>
             <ul>
                 {errors.map((error, idx) => (
                     <li className="edit-errors" key={idx}>

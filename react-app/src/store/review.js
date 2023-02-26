@@ -45,9 +45,13 @@ export const addAReview = (reviews,productId)=> async (dispatch) =>{
         },
         body: JSON.stringify(reviews)
     })
+
+   
     if (response.ok){
         const data = await response.json()
         dispatch(addReview(data))
+        return data
+       
     } else {
         const error = response.json()
         return error

@@ -80,7 +80,7 @@ def delete_product(id):
     return "Successfully Deleted Product"
 
 # get reviews of product
-@product_routes.route('/<int:id>/reviews', methods = ['GET'])
+@product_routes.route('/<int:id>/reviews/', methods = ['GET'])
 @login_required
 def get_all_reviews(productId):
     reviews = Review.query.filter(Review.productId== productId).all()
@@ -91,11 +91,13 @@ def get_all_reviews(productId):
 @product_routes.route('/<int:productId>/reviews/', methods = ['POST'])
 @login_required
 def create_review(productId):
-    form = ReviewForm()
+   
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    data = form.data
+    imageUrl = data.get('imageUrl')
+    print(imageUrl, '***********************************img')
+    form = ReviewForm()
     if form.validate_on_submit():
-        data = form.data
         new_review = Review(
                     customerId= current_user.id,
                     productId = productId,
@@ -110,7 +112,7 @@ def create_review(productId):
         return new_review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-@product_routes.route('/<int:id>/reviews', methods=["PATCH", "PUT"])
+@product_routes.route('/<int:id>/reviews/', methods=["PATCH", "PUT"])
 @login_required
 def edit_review(id):
     form = ReviewForm()

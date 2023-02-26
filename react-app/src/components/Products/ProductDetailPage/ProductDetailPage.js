@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteAProduct, getSingleProduct } from "../../../store/product";
-import CreateReviewForm from "../../Reviews/CreateReviews/CreateReviews";
-import ProductReviews from "../../Reviews/ReviewsList/ReviewsList";
-import ProductReviewslist from "../../Reviews/ReviewsList/ReviewsList";
+import CreateReviewForm from "../../Reviews/CreateReviewForm/CreateReviewForm";
+import ProductReviews from "../../Reviews/ProductReviewsList/ProductReviewsList";
+import ProductReviewslist from "../../Reviews/ProductReviewsList/ProductReviewsList";
 
 
 
@@ -55,8 +55,8 @@ function ProductDetailPage(){
 
     
 
-    <ProductReviewslist product={specificProduct} reviews={reviews} setReviews={setReviews}/>
-    <CreateReviewForm product={specificProduct} reviews={reviews} setReviews={setReviews}/>
+    <ProductReviewslist product={specificProduct} />
+    <CreateReviewForm product={specificProduct} />
         </div>
     )
 }

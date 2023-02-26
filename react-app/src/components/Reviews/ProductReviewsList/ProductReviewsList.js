@@ -37,26 +37,31 @@ const specificReviews = allProductReviews.filter((review)=> review.productId ===
       
     }
 
+  const editReview = async(e,id)=>{
+    e.preventDefault()
+    history.push(`/products/${product.id}/reviews/${id}/update`)
+  }
+
 
  
     return(
         <div className='review-container'>
 
 
-    {specificReviews?.map(({review,stars, productId, customerId, id})=>(
+    {specificReviews?.map(({review,stars, productId, customerId, imageUrl, id})=>(
         
     <span className='review-list' key={review}>
     <div className='userid-rev'> Customer ID: {customerId} </div> 
-   
+    <div className='review-rev'> Review ID: {id}</div> 
    <div className='review-rev'> Review: {review}</div> 
    <div className='star-rev'>Stars:{stars}</div> 
-   <div className='spotid-rev'> Product Number:{ productId}</div> 
-   <div className='id-rev'>ID Number:{id}</div>
+ <div> Review Pictures:</div>
+ <img className ='img' src={imageUrl}></img>
 
 
 
         <button className='delete-review' type="button" onClick={ (e)=> deleteReview(e, id)}>Delete Review</button>
-
+        <button className='delete-review' type="button" onClick={ (e)=> editReview(e, id)}>Edit Review</button>
 </span>
 
 
