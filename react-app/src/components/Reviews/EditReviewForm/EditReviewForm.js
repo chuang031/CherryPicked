@@ -16,7 +16,7 @@ const {productId} = useParams()
 const currentUser = useSelector((state)=>state.session.user)
 const allProductReviews = useSelector((state)=> state.review)
 const specificReview = allProductReviews[reviewId]
-console.log(allProductReviews, 'spec rev')
+console.log(specificReview.review, 'spec rev')
 
 const [review, setReview] = useState(specificReview.review)
 const [stars, setStars] = useState(specificReview.stars)
@@ -57,7 +57,7 @@ return (
                 <input
                     type="text"
                     className="product-input"
-                    value={specificReview.review}
+                    value={review}
                     required
                     onChange={(e) => setReview(e.target.value)}
                 />
@@ -128,7 +128,7 @@ return (
                 <input
                     type="text"
                     className="product-input"
-                    value={specificReview.imageUrl}
+                    value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
                 />
             </label>
