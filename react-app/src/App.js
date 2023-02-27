@@ -11,7 +11,7 @@ import CreateProductForm from "./components/Products/CreateProductForm/CreatePro
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ProductDetailPage from "./components/Products/ProductDetailPage/ProductDetailPage";
 import EditProductForm from "./components/Products/EditProductForm/EditProductForm";
-
+import EditReviewForm from "./components/Reviews/EditReviewForm/EditReviewForm";
 function App() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
@@ -47,6 +47,10 @@ function App() {
                 <ProtectedRoute exact path="/products/:productId/update">
                 <EditProductForm />
             </ProtectedRoute>
+
+            <ProtectedRoute exact path="/products/:productId/reviews/:reviewId/update">
+            <EditReviewForm />
+        </ProtectedRoute>
 
                 </Switch>
             )}

@@ -33,7 +33,7 @@ export const getProductReview =(productId)=> async(dispatch)=>{
     if (response.ok){
         const data = await response.json()
         dispatch(loadReviews(data, productId))
-
+       return data
     }
 }
 
@@ -98,10 +98,9 @@ const reviewsReducer = (state= initalReviews, action) =>{
     let copy = {...state}
     switch(action.type){
         case LOAD_MANY_REVIEWS:
-            action.reviews.forEach((review)=>{
+            action.reviews.Reviews.forEach((review)=>{
                 copy[review.id]= review
 
-            
             })
             return copy
 

@@ -4,6 +4,10 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { getProductReview } from '../../../store/review';
 import { deleteAReview } from '../../../store/review';
 import { getSingleProduct } from '../../../store/product';
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import './ProductReviewsList.css'
+
 const ProductReviewslist = ({product})=>{
 
     const allProducts = useSelector((state)=> Object.values(state.product))
@@ -48,20 +52,21 @@ const specificReviews = allProductReviews.filter((review)=> review.productId ===
         <div className='review-container'>
 
 
-    {specificReviews?.map(({review,stars, productId, customerId, imageUrl, id})=>(
+    {specificReviews?.map(({review, stars, customerId, imageUrl, id})=>(
         
     <span className='review-list' key={review}>
     <div className='userid-rev'> Customer ID: {customerId} </div> 
     <div className='review-rev'> Review ID: {id}</div> 
    <div className='review-rev'> Review: {review}</div> 
-   <div className='star-rev'>Stars:{stars}</div> 
+   <div className='star-rev'>{stars}<FontAwesomeIcon icon={faStar} 
+   className= 'star' color="#ffc107" /></div> 
  <div> Review Pictures:</div>
  <img className ='img' src={imageUrl}></img>
 
 
 
         <button className='delete-review' type="button" onClick={ (e)=> deleteReview(e, id)}>Delete Review</button>
-        <button className='delete-review' type="button" onClick={ (e)=> editReview(e, id)}>Edit Review</button>
+        <button className='edit-review' type="button" onClick={ (e)=> editReview(e, id)}>Edit Review</button>
 </span>
 
 
