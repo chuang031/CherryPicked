@@ -1,23 +1,45 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
+	const history = useHistory();
 	const sessionUser = useSelector(state => state.session.user);
-
+    const navigateToCreateProductForm = async (e) => {
+        history.push("/productform");
+    };
 	return (
-		<ul>
-			<li>
-				<NavLink exact to="/">Home</NavLink>
-			</li>
+		<div className='main-container'>
+			<div className='nav-container'>
+			<nav id='nav-bar'>
+			<div className='left-side'>
+				<NavLink className='home' exact to="/">Home</NavLink>
+				<button
+					className="create-button"
+					onClick={navigateToCreateProductForm}
+				>
+					Create Product
+				</button>
+				</div>
+
+				<div className='right-side'>
 			{isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
-				</li>
-			)}
-		</ul>
+				<div className='profile-container'>
+					<ProfileButton className='profile' user={sessionUser} />
+				</div>
+				
+			)
+
+			
+			
+		}
+		</div>
+		</nav>
+		</div>
+		</div>
+		
 	);
 }
 

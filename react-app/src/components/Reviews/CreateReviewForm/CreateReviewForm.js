@@ -40,7 +40,21 @@ function CreateReviewForm({ product }) {
         setImageUrl("");
     };
 
-    
+    const message = (num)=>{
+        if (num === 1){
+            return 'Cherry hates this'
+        } else if (num === 2){
+            return "Cherry thinks its alright"
+        } else if (num === 3){
+            return "Cherry says OK"
+        } else if (num === 4){
+            return "Cherry's good with it"
+        } else if (num === 5){
+            return "Cherry Picked!"
+        } else {
+            return null
+        }
+    }
     return (
         <section className="create-product-form">
             <form className="create-form" onSubmit={handleSubmit}>
@@ -118,6 +132,7 @@ function CreateReviewForm({ product }) {
                         );
                     })}
                     <p>{hoverStars} out of 5 stars</p>
+                    <p > {message(hoverStars)}  </p>
                 </div>
 
                 <label>

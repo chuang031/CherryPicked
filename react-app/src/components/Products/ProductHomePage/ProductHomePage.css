@@ -67,3 +67,23 @@
     
     
     } */
+
+.link{
+        text-decoration: none;
+        color: black;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: lighter;
+
+    opacity:1;
+    transition: 1s ease;
+  }
+  
+  .link:hover .card_img {
+    opacity:0.5;
+    transition: 1s ease;;
+  }    
+
+ 
+
+    
+ 

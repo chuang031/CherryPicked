@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { getAllProducts } from "../../../store/product";
-import { Link } from "react-router-dom";
+
 import './ProductHomePage.css'
 
 const ProductHomePage = () => {
@@ -13,30 +13,26 @@ const ProductHomePage = () => {
     useEffect(() => {
         dispatch(getAllProducts());
     }, [dispatch]);
-    const navigateToCreateProductForm = async (e) => {
-        history.push("/productform");
-    };
-    console.log(allProducts, "all");
+    // const navigateToCreateProductForm = async (e) => {
+    //     history.push("/productform");
+    // };
+    // console.log(allProducts, "all");
 
     return (
         <div className="product_container">
             <h1>All Products</h1>
-            <button
-            className="create-button"
-            onClick={navigateToCreateProductForm}
-        >
-            Create Product
-        </button>
+
             <div className="products">
-            {allProducts.map(({ id, imageUrl }, idx) => (
+            {allProducts.map(({ id, imageUrl, title, price }, idx) => (
                 <div key={id} className={idx % 3 === 1 ? 'small': idx % 3 === 2? 'medium': 'large'}>
 
-                <Link to ={`/products/${id}`}>
+                <NavLink  className= 'link' to ={`/products/${id}`}>
                     <div className="img-container">
                         <img className="card_img" src={imageUrl}></img>
+                        <div className="title">{title} ${(Math.round(price * 100)/100)}</div>
             </div>
 
-                    </Link>
+                    </NavLink>
                 </div>
             ))}
             </div>

@@ -77,8 +77,9 @@ return (
                    
                     
                  onClick={() => setStars(value)}
+
                  onMouseEnter={()=> {
-                        setHoverStars(value)
+                    setHoverStars(value)
                     setIsShown(true)
                     
                 }}
@@ -120,6 +121,7 @@ return (
                 );
             })}
             <p>{hoverStars} out of 5 stars</p>
+           
         </div>
 
 
