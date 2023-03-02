@@ -24,14 +24,15 @@ const ProductHomePage = () => {
 
             <div className="products">
             {allProducts.map(({ id, imageUrl, title, price }, idx) => (
-                <div key={id} className={idx % 3 === 1 ? 'small': idx % 3 === 2? 'medium': 'large'}>
+                <div key={id} className={idx % 3 === 1 ? 'small': idx % 3 === 2? 'medium': 'small'}>
 
                 <NavLink  className= 'link' to ={`/products/${id}`}>
                     <div className="img-container">
                         <img className="card_img" src={imageUrl}></img>
+                        <div className="overlay">
                         <div className="title">{title} ${(Math.round(price * 100)/100)}</div>
             </div>
-
+            </div>
                     </NavLink>
                 </div>
             ))}

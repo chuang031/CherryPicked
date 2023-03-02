@@ -10,6 +10,7 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
+console.log(user)
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -47,6 +48,7 @@ function ProfileButton({ user }) {
           <>
             <li>{user.username}</li>
             <li>{user.email}</li>
+            <li>{user.brandName}</li>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>

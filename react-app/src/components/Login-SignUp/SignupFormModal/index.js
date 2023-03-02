@@ -4,25 +4,27 @@ import { useModal } from "../context/Modal";
 import { signUp } from "../../../store/session";
 import "./SignupForm.css";
 
-
-
 function SignupFormModal() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [is_brand, setIs_Brand] = useState("False");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-
+    const [is_brand, setIs_Brand] = useState(false);
+    const [firstName, setFirstName] = useState(null);
+    const [lastName, setLastName] = useState(null);
+    const [brandName, setBrandName] = useState("")
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(firstName)
         if (password === confirmPassword) {
-            const data = await dispatch(signUp(username, email, password));
+            const data = await dispatch(
+                signUp(username, email, password, firstName, lastName, brandName)
+              
+            );
             if (data) {
                 setErrors(data);
             } else {
@@ -62,15 +64,48 @@ function SignupFormModal() {
                         required
                     />
                 </label>
+                {!is_brand && (
+                    <>
+                <label>
+                    First Name
+                    <input
+                        type="text"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                      
+                    />
+                </label>
+                <label>
+                    Last Name
+                    <input
+                        type="text"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                    
+                    />
+                </label>
+                </>
+                )}
                 <label>
                     Are you a Brand?
                     <input
                         type="checkbox"
-                        value={username}
-                        onChange={(e) => setIs_Brand(!is_brand)}
-                        required
+                        value={is_brand}
+                        onClick={() => setIs_Brand(!is_brand)}
                     />
                 </label>
+                    { is_brand &&(
+                <label>
+                Brand Name
+                <input
+                    type="text"
+                    value={brandName}
+                    onChange={(e) => setBrandName(e.target.value)}
+                
+                />
+            </label>
+                )
+                    }
                 <label>
                     Password
                     <input
