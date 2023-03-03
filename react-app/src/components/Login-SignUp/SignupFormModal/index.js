@@ -22,8 +22,8 @@ function SignupFormModal() {
         console.log(firstName)
         if (password === confirmPassword) {
             const data = await dispatch(
-                signUp(username, email, password, firstName, lastName, brandName)
-              
+                signUp(username, email, password, firstName, lastName, brandName, is_brand)
+         
             );
             if (data) {
                 setErrors(data);
@@ -35,6 +35,7 @@ function SignupFormModal() {
                 "Confirm Password field must be the same as the Password field",
             ]);
         }
+        console.log(is_brand, 'brand?')
     };
 
     return (
@@ -91,10 +92,10 @@ function SignupFormModal() {
                     <input
                         type="checkbox"
                         value={is_brand}
-                        onClick={() => setIs_Brand(!is_brand)}
+                        onChange={() => setIs_Brand(!is_brand)}
                     />
                 </label>
-                    { is_brand &&(
+                    {is_brand &&(
                 <label>
                 Brand Name
                 <input

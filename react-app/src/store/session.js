@@ -67,7 +67,7 @@ export const logout = () => async (dispatch) => {
 	}
 };
 
-export const signUp = (username, email, password, firstName, lastName, brandName) => async (dispatch) => {
+export const signUp = (username, email, password, firstName, lastName, brandName, is_brand) => async (dispatch) => {
 	
 	const response = await fetch("/api/auth/signup", {
 		method: "POST",
@@ -80,10 +80,11 @@ export const signUp = (username, email, password, firstName, lastName, brandName
 			password,
 			firstName,
 			lastName,
-			brandName
+			brandName,
+			is_brand
 		}),
 	});
-
+console.log(is_brand, 'brand pls')
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(setUser(data));
