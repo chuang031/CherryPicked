@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ProductDetailPage from "./components/Products/ProductDetailPage/ProductDetailPage";
 import EditProductForm from "./components/Products/EditProductForm/EditProductForm";
 import EditReviewForm from "./components/Reviews/EditReviewForm/EditReviewForm";
+import ProfilePage from "./components/Profile/Profile";
 function App() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
@@ -35,6 +36,10 @@ function App() {
                     <ProtectedRoute exact path="/">
                         <ProductHomePage />
                     </ProtectedRoute>
+
+                    <ProtectedRoute exact path="/profile">
+                <ProfilePage/>
+                </ProtectedRoute>
 
                     <ProtectedRoute exact path="/productform">
                         <CreateProductForm />

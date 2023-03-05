@@ -19,7 +19,7 @@ function SignupFormModal() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(firstName)
+  
         if (password === confirmPassword) {
             const data = await dispatch(
                 signUp(username, email, password, firstName, lastName, brandName, is_brand)
@@ -35,7 +35,7 @@ function SignupFormModal() {
                 "Confirm Password field must be the same as the Password field",
             ]);
         }
-        console.log(is_brand, 'brand?')
+      
     };
 
     return (

@@ -26,7 +26,7 @@ function CreateReviewForm({ product }) {
         const payload = { review, stars, imageUrl };
 
         let data = await dispatch(addAReview(payload, product.id));
-        console.log(data, "rev");
+    
         dispatch(getSingleProduct(product.id));
 
         if (data.errors) {

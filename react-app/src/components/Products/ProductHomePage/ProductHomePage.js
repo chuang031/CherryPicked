@@ -13,14 +13,27 @@ const ProductHomePage = () => {
     useEffect(() => {
         dispatch(getAllProducts());
     }, [dispatch]);
-    // const navigateToCreateProductForm = async (e) => {
-    //     history.push("/productform");
-    // };
-    // console.log(allProducts, "all");
-
+   
+  
+    const sessionUser = useSelector(state => state.session.user);
+   
+    const navigateToCreateProductForm = async (e) => {
+        history.push("/productform");
+    };
     return (
         <div className="product_container">
-            <h1 className="cherrypicked">Cherry Picked <img className = 'logo' src={cherry}></img></h1> 
+            <h1 className="cherrypicked">Cherry Picked </h1> 
+            <div className="button-container">
+            {sessionUser.isBrand &&(
+				<button
+					className="create-products"
+					onClick={navigateToCreateProductForm}
+				>
+					Create Product
+				</button>
+				)
+				}
+                </div>
 
             <div className="products">
             {allProducts.map(({ id, imageUrl, title, price }, idx) => (

@@ -12,12 +12,11 @@ import "./ProductReviewsList.css";
 const ProductReviewslist = ({ product }) => {
     const allProducts = useSelector((state) => Object.values(state.product));
 
-    console.log(allProducts, "all products");
     const currentUser = useSelector((state) => state.session.user);
     const allProductReviews = useSelector((state) =>
         Object.values(state.review)
     );
-    console.log(allProductReviews, "review");
+    
     const [isShown, setIsShown] = useState(false);
 
     const dispatch = useDispatch();
@@ -26,6 +25,8 @@ const ProductReviewslist = ({ product }) => {
     const specificReviews = allProductReviews.filter(
         (review) => review.productId === product.id
     );
+
+ 
 
     useEffect(() => {
         // setReviews(specificReviews)
@@ -86,11 +87,16 @@ const ProductReviewslist = ({ product }) => {
                                 );
                             })}
                             <div>{stars} out of 5 stars</div>
+                          
                         </div>
+                         
+                            <div>
+                        <div> Review Picture:</div>
+                        <img className="rev-img" src={imageUrl}></img>
+                        </div>
+                        
 
-                        <div> Review Pictures:</div>
-                        <img className="img" src={imageUrl}></img>
-
+                            {currentUser.id === customerId &&(
                         <button
                             className="delete-review"
                             type="button"
@@ -98,6 +104,10 @@ const ProductReviewslist = ({ product }) => {
                         >
                             Delete Review
                         </button>
+
+                        )}
+
+                    {currentUser.id === customerId &&(
                         <button
                             className="edit-review"
                             type="button"
@@ -105,6 +115,8 @@ const ProductReviewslist = ({ product }) => {
                         >
                             Edit Review
                         </button>
+
+                        )}
                     </span>
                 )
             )}

@@ -4,13 +4,13 @@ from app.models import db, User, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', firstName = 'Demo', lastName = 'User', email='demo@aa.io', password='password', imageUrl = 'https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg', is_brand = False, brandName = None, about = "I'm the Demo user"  )
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', imageUrl = 'https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg', is_brand = True, brandName = "L'oreal", about = "I'm the Brand user")
+        username='Demo', firstName = 'Demo', lastName = 'User', email='demo@aa.io', password='password', imageUrl = 'https://cdn-icons-png.flaticon.com/512/9590/9590989.png', is_brand = False, brandName = None, about = "I'm the Demo user"  )
+    hourglass = User(
+        username='hourglassbrand', email='hourglass@aa.io', password='password', imageUrl = 'https://cdn.shopify.com/s/files/1/0081/1660/0950/files/unlock-change_NEW_about-nav.jpg?v=1673570081', is_brand = True, brandName = "HOURGLASS", about = "I'm the Brand user")
    
 
     db.session.add(demo)
-    db.session.add(marnie)
+    db.session.add(hourglass)
    
     db.session.commit()
 

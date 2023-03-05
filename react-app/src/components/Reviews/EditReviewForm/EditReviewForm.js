@@ -16,7 +16,7 @@ const {productId} = useParams()
 const currentUser = useSelector((state)=>state.session.user)
 const allProductReviews = useSelector((state)=> state.review)
 const specificReview = allProductReviews[reviewId]
-console.log(specificReview.review, 'spec rev')
+
 
 const [review, setReview] = useState(specificReview.review)
 const [stars, setStars] = useState(specificReview.stars)

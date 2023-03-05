@@ -4,13 +4,16 @@ import { logout } from "../../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+
+// import { faStar } from "@fortawesome/free-solid-svg-icons";
 import './Navigation.css'
+
+import down from '../../../images/down.png'
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
-console.log(user)
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -40,15 +43,23 @@ console.log(user)
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
+  
+      <img onClick={openMenu} className="down-arrow" src={down}></img>
+ 
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>{user.brandName}</li>
+            <li>Username: {user.username}</li>
+            <li>Email: {user.email}</li>
+            { user.isBrand &&  (
+            <li>Brand Name: {user.brandName}</li>
+            )
+            }{!user.isBrand &&  (
+              <li>Name: {user.firstName} {user.lastName}</li>
+              )
+
+            }
+          
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>

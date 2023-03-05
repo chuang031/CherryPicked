@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     lastName = db.Column(db.String(20), nullable=True)
     about= db.Column(db.String(500),nullable = True, default='')
     imageUrl = db.Column(db.String(1500), nullable = True)
-    brandName = db.Column(db.String(20), nullable=True, unique=True)
+    brandName = db.Column(db.String(20), nullable=True)
     is_brand = db.Column(db.Boolean, nullable=False, unique=False, default= False)
     
     reviews = db.relationship("Review", back_populates="user",

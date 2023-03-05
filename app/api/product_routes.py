@@ -22,13 +22,13 @@ def validation_errors_to_error_messages(validation_errors):
 @login_required
 def get_all_products():
     products = Product.query.all()
-    # print('********GET ALL PINS********')
+
     return jsonify([product.to_dict() for product in products])
 
 @product_routes.route('/<int:id>')
 @login_required
 def get_product(id):
-    # print('************GET 1 PIN********************')
+
     product = Product.query.get(id)
     return product.to_dict()
 
@@ -36,7 +36,7 @@ def get_product(id):
 @product_routes.route('/', methods=['POST'])
 @login_required
 def create_product():
-    # print("************CREATE NEW PIN********************")
+
     form = ProductForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -46,7 +46,6 @@ def create_product():
         new_product = Product(brandId=current_user.get_id(),
                       title = data['title'], detail=data['detail'], url=data['url'], imageUrl=data['imageUrl'], price = data['price'])
         form.populate_obj(new_product)
-        # print('*********************CREATED*******************************')
         db.session.add(new_product)
         db.session.commit()
         return new_product.to_dict()
@@ -66,7 +65,6 @@ def edit_product(id):
 
         for key, value in data.items():
             setattr(product, key, value)
-        # print('*********************UPDATED PIN*******************************')
         db.session.commit()
         return product.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
@@ -95,7 +93,7 @@ def create_review(productId):
     form['csrf_token'].data = request.cookies['csrf_token']
     data = form.data
     imageUrl = data.get('imageUrl')
-    print(imageUrl, '***********************************img')
+
     if form.validate_on_submit():
         new_review = Review(
                     customerId= current_user.id,
