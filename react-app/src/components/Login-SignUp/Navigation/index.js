@@ -27,8 +27,8 @@ function Navigation({ isLoaded }){
 			<div className='right-side'>
 		
 		{!sessionUser && (
-			<>
-			  <OpenModalButton
+			<div  >
+			  <OpenModalButton 
 				buttonText="Log In"
 		
 				modalComponent={<LoginFormModal />}
@@ -39,7 +39,7 @@ function Navigation({ isLoaded }){
 			
 				modalComponent={<SignupFormModal />}
 			  />
-			</>
+			</div >
 	)}
 
 

@@ -87,16 +87,21 @@ function SignupFormModal() {
                 </label>
                 </>
                 )}
-                <label>
+
+                <div >
+                <label className="checkbox-wrapper-2">
                     Are you a Brand?
                     <input
                         type="checkbox"
+                        className="sc-gJwTLC ikxBAC"
                         value={is_brand}
                         onChange={() => setIs_Brand(!is_brand)}
                     />
                 </label>
+                </div>
+
                     {is_brand &&(
-                <label>
+                <label >
                 Brand Name
                 <input
                     type="text"
