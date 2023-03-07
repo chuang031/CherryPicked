@@ -34,3 +34,22 @@
   .button:active {
     opacity: .5;
   }
+
+  .log{
+    display: flex;
+    justify-content: center;
+    color: #FF4742;
+  }
+  .errors{
+    color: red;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    list-style-type: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    font-style: italic;
+
+
+  }

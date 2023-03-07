@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, BooleanField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired, Email, ValidationError, Length
 from app.models import User
 
 
@@ -25,7 +25,7 @@ class SignUpForm(FlaskForm):
     lastName = StringField('lastName')
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
-    email = StringField('email', validators=[DataRequired(), user_exists])
-    password = StringField('password', validators=[DataRequired()])
+    email = StringField('email', validators=[DataRequired(),Email(), user_exists])
+    password = StringField('password', validators=[DataRequired(), Length(min=6, max=20, message="Password must be between 6 to 20 characters long." )])
     brandName = StringField('brandName')
     is_brand = BooleanField('is_brand')
