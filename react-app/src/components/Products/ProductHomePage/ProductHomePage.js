@@ -33,6 +33,11 @@ const ProductHomePage = () => {
 				</button>
 				)
 				}
+
+                {!(sessionUser.isBrand) &&(
+                    <div className="msg">* You must be a Brand to create new products! *</div>
+                    
+                )}
                 </div>
 
             <div className="products">

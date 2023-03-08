@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addAProduct } from "../../../store/product";
-
+import './CreateProductForm.css'
 function CreateProductForm() {
     const [title, setTitle] = useState("");
     const [imageUrl, setImageUrl] = useState("");
@@ -40,60 +40,60 @@ function CreateProductForm() {
                     ))}
                 </ul>
 
-                <label>
+                <label className="input-label">
                     Title
-                    <input
+                    <input className="input"
                         type="text"
-                        className="product-input"
+                        
                         value={title}
                         required
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </label>
 
-                <label>
+                <label className="input-label">
                     Product Details
-                    <input
+                    <input className="input"
                         type="text"
-                        className="product-input"
+                        
                         value={detail}
                         required
                         onChange={(e) => setDetail(e.target.value)}
                     />
                 </label>
 
-                <label>
+                <label className="input-label">
                     Price
                     <input
                         type="integer"
-                        className="product-input"
+                        className="input"
                         value={price}
                         required
                         onChange={(e) => setPrice(e.target.value)}
                     />
                 </label>
 
-                <label>
+                <label className="input-label">
                     Image Url
                     <input
                         type="text"
-                        className="product-input"
+                        className="input"
                         value={imageUrl}
                         required
                         onChange={(e) => setImageUrl(e.target.value)}
                     />
                 </label>
 
-                <label>
+                <label className="input-label">
                     Link
                     <input
                         type="text"
-                        className="pin-input"
+                        className="input"
                         value={url}
                         required
                         onChange={(e) => setUrl(e.target.value)}
                     />
-                </label>
+                </label >
                 <button className="create-button" type="submit">
                     Create new Product!
                 </button>

@@ -12,12 +12,21 @@
   background-color: white;
   border-radius: 8px;
   padding: 10px 20px;  
-  width: 300px;
+  width: auto;
   margin-top: 20px;
   z-index: 10;
-  list-style-type: none
+  list-style-type: none;
+  font-family: Georgia, arial, serif;
+  font-size: 14px;
+  font-weight: 500;
+ color: #FF4742;;
+
+  
 }
 
+li{
+  margin: 5px 5px 5px;
+}
 
 
 .profile-dropdown::before {
@@ -68,10 +77,13 @@
 .right-side {
   display: flex;
   height: 48px;
-  min-width: 123px;
+  min-width: 300px;
   width: 20%;
   align-items: center;
-  justify-content: center
+  justify-content: flex-end;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
 
 }
 
@@ -135,7 +147,7 @@ align-items: flex-end;
   cursor: pointer;
   display: inline-block;
   font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 5px;
   min-height: 30px;
@@ -148,7 +160,8 @@ align-items: flex-end;
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
-margin: 10px 10px 10px;
+margin: 5px 5px 5px;
+
 }
 
 .button:hover,

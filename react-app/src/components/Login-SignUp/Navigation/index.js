@@ -9,11 +9,32 @@ import {  } from "@fortawesome/free-solid-svg-icons";
 import SignupFormModal from '../SignupFormModal';
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
+import { useDispatch } from 'react-redux';
+import * as sessionActions from '../../../store/session'
+
+import { login} from '../../../store/session';
 
 function Navigation({ isLoaded }){
 	const history = useHistory();
 	const sessionUser = useSelector(state => state.session.user);
-   
+   const dispatch= useDispatch()
+	const demoUser= (e)=>{
+		e.preventDefault()
+			const email = "demo@aa.io"
+			const password = "password"
+		
+		
+			return dispatch(login(email, password))
+		  }
+
+		  const brandUser= (e)=>{
+			e.preventDefault()
+				const email = "hourglass@aa.io"
+				const password = "password"
+			
+			
+				return dispatch(login(email, password))
+			  }
 	return (
 		<div className='main-container'>
 			<div className='nav-container'>
@@ -25,8 +46,11 @@ function Navigation({ isLoaded }){
 
 			
 			<div className='right-side'>
-		
+
 		{!sessionUser && (
+			
+		
+	
 			<div  >
 			  <OpenModalButton 
 				buttonText="Log In"
@@ -40,7 +64,17 @@ function Navigation({ isLoaded }){
 				modalComponent={<SignupFormModal />}
 			  />
 			</div >
+		
 	)}
+
+
+	{!sessionUser &&(
+		<div>
+		<button className='button' onClick={demoUser}>Demo Customer</button>	
+		<button className='button' onClick={brandUser}>Demo Brand</button>	
+</div>
+		)}
+
 
 
 			{ sessionUser && (

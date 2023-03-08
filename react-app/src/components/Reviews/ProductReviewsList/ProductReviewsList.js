@@ -7,31 +7,37 @@ import { getSingleProduct } from "../../../store/product";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ProductReviewsList.css";
-
-
+import { getOneUserThunk } from "../../../store/user";
+import {loadOtherUsers} from "../../../store/user";
 const ProductReviewslist = ({ product }) => {
     const allProducts = useSelector((state) => Object.values(state.product));
-
+    const {productId} = useParams()
     const currentUser = useSelector((state) => state.session.user);
-    const allProductReviews = useSelector((state) =>
-        Object.values(state.review)
-    );
-    
+
     const [isShown, setIsShown] = useState(false);
 
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const allProductReviews = useSelector((state) =>
+    Object.values(state.review)
+);
     const specificReviews = allProductReviews.filter(
         (review) => review.productId === product.id
     );
 
- 
+// const specificReviewCustomers = allProductReviews.filter(
+//     (review)=> review.customerId 
+// )
 
+    
+ 
+ 
     useEffect(() => {
         // setReviews(specificReviews)
         // if(spot !== undefined){
         dispatch(getProductReview(product.id));
+     
         // .then(res=>setReviews(res.spotReviews))
     }, [product.id, dispatch]);
 
@@ -52,10 +58,12 @@ const ProductReviewslist = ({ product }) => {
         <div className="review-container">
             {specificReviews?.map(
                 ({ review, stars, customerId, imageUrl, id }) => (
+
+                    
                     <span className="review-list" key={review}>
                         <div className="userid-rev">
-                            {" "}
-                            Customer ID: {customerId}{" "}
+                            
+                            Customer ID: {customerId}
                         </div>
                         <div className="review-rev"> Review ID: {id}</div>
                         <div className="review-rev"> Review: {review}</div>

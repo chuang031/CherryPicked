@@ -99,7 +99,10 @@
   }
  
   .cherrypicked{
-    font-family: Georgia, arial, serif; font-size: 38px; color: #FF4742; text-align: center;
+    font-family: Georgia, arial, serif; 
+    font-size: 38px; 
+    color: #FF4742;
+     text-align: center;
   }
 
   .logo{
@@ -155,6 +158,10 @@
     opacity: .5;
   }
 
-
-    
+.msg{
+    font-family: Georgia, arial, serif; 
+    font-size: 15px; 
+    color: #FF4742;
+     text-align: center;
+}
  

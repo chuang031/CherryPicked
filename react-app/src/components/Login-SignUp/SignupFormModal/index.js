@@ -39,59 +39,21 @@ function SignupFormModal() {
     };
 
     return (
-        <>
-            <h1>Sign Up</h1>
+        <div className = "signup-modal">
+
+     
+       
+            <h1 className="card">Sign Up</h1>
             <form onSubmit={handleSubmit}>
                 <ul className="errors">
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
-                <label>
-                    Email
-                    <input
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Username
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                    />
-                </label>
-                {!is_brand && (
-                    <>
-                <label>
-                    First Name
-                    <input
-                        type="text"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                      
-                    />
-                </label>
-                <label>
-                    Last Name
-                    <input
-                        type="text"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                    
-                    />
-                </label>
-                </>
-                )}
-
                 <div >
                 <label className="checkbox-wrapper-2">
                     Are you a Brand?
-                    <input
+                    <input 
                         type="checkbox"
                         className="sc-gJwTLC ikxBAC"
                         value={is_brand}
@@ -100,39 +62,90 @@ function SignupFormModal() {
                 </label>
                 </div>
 
+                <label className="input-label">
+                    Email
+                    <input className="input"
+                        type="text"
+                        value={email}
+                        placeholder="Enter Email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                </label>
+                <label className="input-label">
+                    Username
+                    <input className="input"
+                        type="text"
+                        value={username}
+                        placeholder='Enter Username'
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                </label>
+                {!is_brand && (
+                    <>
+                <label className="input-label">
+                    First Name
+                    <input className="input"
+                        type="text"
+                        value={firstName}
+                        placeholder="Customer First Name"
+                        onChange={(e) => setFirstName(e.target.value)}
+                      
+                    />
+                </label>
+                <label className="input-label">
+                    Last Name
+                    <input className="input"
+                        type="text"
+                        value={lastName}
+                        placeholder="Customer Last Name"
+                        onChange={(e) => setLastName(e.target.value)}
+                    
+                    />
+                </label>
+                </>
+                )}
+
+             
+
                     {is_brand &&(
-                <label >
+                <label className="input-label">
                 Brand Name
-                <input
+                <input className="input"
                     type="text"
                     value={brandName}
+                    placeholder="Brand Name"
                     onChange={(e) => setBrandName(e.target.value)}
                 
                 />
             </label>
                 )
                     }
-                <label>
+                <label className="input-label">
                     Password
-                    <input
+                    <input className="input"
                         type="password"
                         value={password}
+                        placeholder="Enter Password"
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
                 </label>
-                <label>
+                <label className="input-label">
                     Confirm Password
-                    <input
+                    <input className="input"
                         type="password"
                         value={confirmPassword}
+                        placeholder="Confirm Password"
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
                     />
                 </label>
-                <button type="submit">Sign Up</button>
+                <button className='submit' type="submit">Sign Up</button>
             </form>
-        </>
+        
+        </div>
     );
 }
 
