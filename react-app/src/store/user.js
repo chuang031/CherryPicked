@@ -20,6 +20,8 @@ export const getOneUserThunk = (userId) => async (dispatch) => {
   }
 };
 
+
+
 export const followUserThunk = (userId) => async (dispatch) => {
   const res = await fetch(`/api/users/follow/${userId}`, {
     method: "POST",

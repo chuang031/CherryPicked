@@ -11,7 +11,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../../store/session'
-
+import {GiCherry} from 'react-icons/gi'
 import { login} from '../../../store/session';
 
 function Navigation({ isLoaded }){
@@ -39,9 +39,9 @@ function Navigation({ isLoaded }){
 		<div className='main-container'>
 			<div className='nav-container'>
 			
-			<div className='left-side'>
-				<NavLink className='home' exact to="/"><img className = 'cherryhome' src={cherry}></img></NavLink>
-			
+			<div className='left-side '>
+				<NavLink className='cherry w-12' exact to="/">{<img src= {cherry}></img>}</NavLink>
+				<NavLink  exact to="/" className="h-fit p-5 font-serif text-transparent text-center text-2xl bg-clip-text bg-gradient-to-r from-red-400 to-pink-600 ">Cherry Picked </NavLink> 
 			</div>
 
 			

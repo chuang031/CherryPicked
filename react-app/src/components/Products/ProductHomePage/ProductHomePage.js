@@ -4,6 +4,8 @@ import { NavLink, useHistory } from "react-router-dom";
 import { getAllProducts } from "../../../store/product";
 import cherry from '../../../images/cherry.png'
 import './ProductHomePage.css'
+import { getAllUsers } from "../../../store/user";
+import { getAllCustomers } from "../../../store/customer";
 
 const ProductHomePage = () => {
     const history = useHistory();
@@ -12,6 +14,7 @@ const ProductHomePage = () => {
     const allProducts = useSelector((state) => Object.values(state.product));
     useEffect(() => {
         dispatch(getAllProducts());
+        dispatch(getAllCustomers())
     }, [dispatch]);
    
   
@@ -21,9 +24,10 @@ const ProductHomePage = () => {
         history.push("/productform");
     };
     return (
-        <div className="product_container">
-            <h1 className="cherrypicked">Cherry Picked </h1> 
-            <div className="button-container">
+        <div >
+     
+            <h1 className="h-fit p-5 font-serif text-transparent text-center text-5xl bg-clip-text bg-gradient-to-r from-red-400 to-pink-600 ">Cherry Picked </h1> 
+            <div className="button-container m-10">
             {sessionUser.isBrand &&(
 				<button
 					className="create-products"
@@ -35,12 +39,12 @@ const ProductHomePage = () => {
 				}
 
                 {!(sessionUser.isBrand) &&(
-                    <div className="msg">* You must be a Brand to create new products! *</div>
+                    <div className="h-fit p-5 font-serif text-transparent text-center text-l bg-clip-text bg-gradient-to-r from-red-400 to-pink-600">* You must be a Brand to create new products! *</div>
                     
                 )}
                 </div>
 
-            <div className="products">
+            <div className="products ">
             {allProducts.map(({ id, imageUrl, title, price }, idx) => (
                 <div key={id} className={'medium'}>
 
@@ -48,7 +52,7 @@ const ProductHomePage = () => {
                     <div className="img-container">
                         <img className="card_img" src={imageUrl}></img>
                        
-                        <div className="title">{title} ${(Math.round(price * 100)/100)}</div>
+                        <div className="title font-serif ">{title} ${(Math.round(price * 100)/100)}</div>
             </div>
            
                     </NavLink>

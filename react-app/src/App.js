@@ -13,13 +13,20 @@ import ProductDetailPage from "./components/Products/ProductDetailPage/ProductDe
 import EditProductForm from "./components/Products/EditProductForm/EditProductForm";
 import EditReviewForm from "./components/Reviews/EditReviewForm/EditReviewForm";
 import ProfilePage from "./components/Profile/Profile";
+import { getAllCustomers } from "./store/customer";
+import { getProductReview } from "./store/review";
+
 function App() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         dispatch(authenticate()).then(() => setIsLoaded(true));
+       dispatch(getAllCustomers())
+       dispatch(getProductReview())
     }, [dispatch]);
 
+
+ 
     return (
         <>
             <Navigation isLoaded={isLoaded} />

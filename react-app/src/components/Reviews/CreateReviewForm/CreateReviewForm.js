@@ -145,7 +145,7 @@ function CreateReviewForm({ product }) {
                     />
                 </label>
 
-                <button className="create-button" type="submit">
+                <button className="create-button bg-rose-500" type="submit">
                     Create Review!
                 </button>
             </form>

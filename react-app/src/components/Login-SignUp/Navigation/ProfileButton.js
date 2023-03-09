@@ -4,7 +4,7 @@ import { logout } from "../../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-
+ import {AiOutlineDownCircle} from "react-icons/ai"
 // import { faStar } from "@fortawesome/free-solid-svg-icons";
 import './Navigation.css'
 
@@ -44,11 +44,11 @@ function ProfileButton({ user }) {
   return (
     <>
   
-      <img onClick={openMenu} className="down-arrow" src={down}></img>
+      <div onClick={openMenu} className="fill-red-400" ><AiOutlineDownCircle/></div>
  
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
-          <>
+          <div className="text-transparent text-l bg-clip-text bg-gradient-to-r from-red-400 to-pink-600">
             <li>Username: {user.username}</li>
             <li>Email: {user.email}</li>
             { user.isBrand &&  (
@@ -63,7 +63,7 @@ function ProfileButton({ user }) {
             <li>
               <button className='button' onClick={handleLogout}>Log Out</button>
             </li>
-          </>
+          </div>
         ) : (
           <>
             <OpenModalButton

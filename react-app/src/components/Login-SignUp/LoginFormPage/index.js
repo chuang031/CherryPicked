@@ -23,14 +23,14 @@ function LoginFormPage() {
 
   return (
     <>
-      <h1 className="log">Log In to Cherry Picked!</h1>
+      <h1 className="log font-serif ">Log In to Cherry Picked!</h1>
       <form onSubmit={handleSubmit}>
         <ul className="errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label className="input-label">
+        <label className="input-label font-serif ">
           Email
           <input className="input"
             type="text"
@@ -39,7 +39,7 @@ function LoginFormPage() {
             required
           />
         </label>
-        <label className="input-label">
+        <label className="input-label font-serif ">
           Password
           <input className="input"
             type="password"
@@ -48,7 +48,7 @@ function LoginFormPage() {
             required
           />
         </label>
-        <button className= 'button' type="submit">Log In</button>
+        <button className= 'button  bg-rose-500' type="submit">Log In</button>
       </form>
     </>
   );

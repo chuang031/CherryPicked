@@ -23,7 +23,7 @@ function LoginFormModal() {
     };
 
     return (
-        <div className="login_modal">
+        <div className="login_modal font-serif ">
             <h1 className="login-sign">Log In</h1>
             <form onSubmit={handleSubmit}>
                 <ul className="errors">
@@ -49,7 +49,7 @@ function LoginFormModal() {
                         required
                     />
                 </label>
-                <button className='submit' type="submit">Log In</button>
+                <button className='submit  bg-rose-500' type="submit">Log In</button>
             </form>
         </div>
     );

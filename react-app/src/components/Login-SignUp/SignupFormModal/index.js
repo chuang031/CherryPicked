@@ -39,11 +39,11 @@ function SignupFormModal() {
     };
 
     return (
-        <div className = "signup-modal">
+        <div className = "signup-modal font-serif ">
 
      
        
-            <h1 className="card">Sign Up</h1>
+            <h1 className="card mt-7">Sign Up</h1>
             <form onSubmit={handleSubmit}>
                 <ul className="errors">
                     {errors.map((error, idx) => (
@@ -142,7 +142,7 @@ function SignupFormModal() {
                         required
                     />
                 </label>
-                <button className='submit' type="submit">Sign Up</button>
+                <button className='submit  bg-rose-500' type="submit">Sign Up</button>
             </form>
         
         </div>
