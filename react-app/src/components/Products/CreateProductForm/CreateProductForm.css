@@ -1,12 +1,4 @@
-.create-form{
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    
-}
+
 
 .create{
     display: flex;

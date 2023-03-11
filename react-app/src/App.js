@@ -15,7 +15,8 @@ import EditReviewForm from "./components/Reviews/EditReviewForm/EditReviewForm";
 import ProfilePage from "./components/Profile/Profile";
 import { getAllCustomers } from "./store/customer";
 import { getProductReview } from "./store/review";
-
+import { getAllProducts } from "./store/product";
+import ProductReviewslist from "./components/Reviews/ProductReviewsList/ProductReviewsList";
 function App() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
@@ -23,6 +24,7 @@ function App() {
         dispatch(authenticate()).then(() => setIsLoaded(true));
        dispatch(getAllCustomers())
        dispatch(getProductReview())
+       dispatch(getAllProducts())
     }, [dispatch]);
 
 
@@ -55,6 +57,10 @@ function App() {
                     <ProtectedRoute exact path="/products/:productId">
                     <ProductDetailPage />
                 </ProtectedRoute>
+
+                <ProtectedRoute exact path="/products/:productId/reviews">
+                <ProductReviewslist />
+            </ProtectedRoute>
 
                 <ProtectedRoute exact path="/products/:productId/update">
                 <EditProductForm />

@@ -26,9 +26,10 @@ function LoginFormModal() {
         <div className="login_modal font-serif ">
             <h1 className="login-sign">Log In</h1>
             <form onSubmit={handleSubmit}>
-                <ul className="errors">
+                <ul >
                     {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
+                        <li className="errors border  border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700"  
+                        key={idx}>{error}</li>
                     ))}
                 </ul>
                 <label className="input-label">

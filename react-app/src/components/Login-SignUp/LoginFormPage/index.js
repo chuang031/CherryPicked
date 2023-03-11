@@ -27,7 +27,9 @@ function LoginFormPage() {
       <form onSubmit={handleSubmit}>
         <ul className="errors">
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li 
+            className="errors border  border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700"
+            key={idx}>{error}</li>
           ))}
         </ul>
         <label className="input-label font-serif ">
