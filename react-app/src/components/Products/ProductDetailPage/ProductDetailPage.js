@@ -89,10 +89,13 @@ function ProductDetailPage() {
                                             {product?.title}{" "}
                                         </a>
                                     </div>
+
+                                  
                                 </article>
 
-                                <div class="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1">
-                                    {sessionUser.isBrand && (
+                                <div class='flex justify-center'>
+                                    {(sessionUser?.isBrand && (sessionUser?.id === productAuthor?.id))&& (
+                                        <div class="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1 mr-1">
                                         <Link to={`/products/${product?.id}/update`}>
                                         <button
                                             class="inline-flex items-center
@@ -117,9 +120,11 @@ function ProductDetailPage() {
                                             Edit
                                         </button>
                                         </Link>
+                                        </div>
                                     )}
 
-                                    {sessionUser.isBrand && (
+                                    {(sessionUser?.isBrand && (sessionUser?.id === productAuthor?.id) )&& (
+                                        <div class="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1">
                                         <button
                                             onClick={deleteProduct}
                                             class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative"
@@ -144,16 +149,21 @@ function ProductDetailPage() {
                                             </svg>
                                             Delete
                                         </button>
+                                        </div>
                                     )}
                                 </div>
-                                {!sessionUser.isBrand && (
-                                    <h2 className="h-fit p-5 font-serif text-transparent text-center text-l bg-clip-text bg-gradient-to-r from-red-400 to-pink-600">
-                                        *Only Brands can delete or edit a
-                                        Product*
-                                    </h2>
-                                )}
+                               
                             </div>
+
+                         
                         </div>
+
+                        {!sessionUser.isBrand && (
+                            <h2 className="h-fit p-5 font-serif text-transparent text-center text-l bg-clip-text bg-gradient-to-r from-red-400 to-pink-600">
+                                *Only Brands can delete or edit a
+                                Product*
+                            </h2>
+                        )}
                     </div>
                 </div>
             </section>
