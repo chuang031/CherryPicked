@@ -8,9 +8,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ProductReviewsList.css";
 import OpenModalButton from "../../Login-SignUp/OpenModalButton";
-import { getOneUserThunk } from "../../../store/user";
-import { loadOtherUsers } from "../../../store/user";
-import EditReviewForm from "../EditReviewForm/EditReviewForm";
+
 
 import CreateReviewForm from "../CreateReviewForm/CreateReviewForm";
 const ProductReviewslist = ({ product }) => {
@@ -241,6 +239,7 @@ const ProductReviewslist = ({ product }) => {
                                 </div>
                             )
                         )}
+
                     </div>
                 </div>
             </section>
