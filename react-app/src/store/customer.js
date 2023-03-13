@@ -13,7 +13,7 @@ export const getAllCustomers = ()=>async(dispatch)=>{
     
     if(res.ok){
        const customers = await res.json()
-       console.log(customers,'helllo')
+   
        dispatch(loadOtherUsers(customers));
     
     }
