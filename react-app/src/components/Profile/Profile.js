@@ -9,7 +9,9 @@ function ProfilePage(){
 
     return (
         <div>
-        <div> <img src={sessionUser.imageUrl}></img></div>
+        <div> <img src={!(sessionUser?.imageUrl) ?  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg-5Ga9DOBo0Xl-QkZK8TmKUH0IOcLmn4t_wTNzOIgBQPET6MM1uk8BI7v69cQ1nBNwJs&usqp=CAU': sessionUser.imageUrl}></img></div>
+
+
         {!(sessionUser.isBrand) && (
         <h1> {sessionUser.firstName} {sessionUser.lastName}</h1>
         )}

@@ -27,6 +27,10 @@ const ProductHomePage = () => {
         <div >
      
             <h1 className="h-fit p-5 font-serif text-transparent text-center text-5xl bg-clip-text bg-gradient-to-r from-red-400 to-pink-600 ">Cherry Picked </h1> 
+            <a href='https://github.com/chuang031/CherryPicked'>
+            <h1 className="about -fit p-5 font-serif text-transparent text-center text-sm bg-clip-text bg-gradient-to-r from-red-400 to-pink-600 ">  © 2023 Cherry Picked | About Me </h1>
+            </a>
+
             <div className="button-container m-10">
             {sessionUser.isBrand &&(
 				<button
